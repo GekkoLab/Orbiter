@@ -68,11 +68,7 @@ static NSString * AFNormalizedDeviceTokenStringWithDeviceToken(id deviceToken) {
     self.HTTPManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     self.HTTPManager.credential = credential;
     
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    self.HTTPManager.requestSerializer = requestSerializer;
-    
-    self.HTTPManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [self.HTTPManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [self.HTTPManager.responseSerializer setAcceptableContentTypes:[NSSet setWithObjects:@"application/json", @"text/plain", nil]];
     
     return self;
